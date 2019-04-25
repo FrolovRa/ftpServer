@@ -8,7 +8,7 @@ This is a simple implementation of a FTP server in Java as a class project for C
 - Support for both active and passive mode connections
 - Supports binary/image and ASCII transfer mode
 - Multi threaded (multiple users can transfer files at the same time)
-- Standard control port is 1025, standard data port is 1026
+- Standard initialThread port is 1025, standard data port is 1026
 - Standard user name is "comp4621" and password "network". User name and password are not case sensitive.
 - Understands extended FTP arguments (EPSV instead of PASV and EPRT instead of EPRT).
 
@@ -16,7 +16,7 @@ This is a simple implementation of a FTP server in Java as a class project for C
 
 - Not working with GUI ftp clients, because they need to receive directory listings ins /bin/ls format. This implementation only prints names of files and folders, no additional information.
 - File system access is not synchronized. Two clients writing to the same file will result in invalid results.
-- If this is executed within an IDE (like Eclipse or IntelliJ IDEA), the control port likely needs to be a number larger than 1024. Java allows sockets on ports below 1024 only when the JVM is executed in super user mode (which IDEs normally don't do).
+- If this is executed within an IDE (like Eclipse or IntelliJ IDEA), the initialThread port likely needs to be a number larger than 1024. Java allows sockets on ports below 1024 only when the JVM is executed in super user mode (which IDEs normally don't do).
 - The number of accepted connections is not limited. This could easily be exploited to crash the server by just opening several thousands of connections until the JVM crashes.
 - This implementation can only run in Passive Mode on the same host as the client. If it needs to run on another host, the external server IP must be manually set as "myIp" in handlePasv(). This is because the Java socket implementation does not reliably return the external IP of the corresponding network device. To overcome this, one would probably have to use some kind of external API.
 - This implementation does not support IPv6.

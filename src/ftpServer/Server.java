@@ -1,8 +1,12 @@
 package ftpServer;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * FTP Server class.
  * On receiving a new connection it creates a new worker thread.
@@ -10,18 +14,23 @@ import java.net.Socket;
  * @author Moritz Stueckler (SID 20414726)
  *
  */
-public class Server
-{
-    private int controlPort = 1025;
+public class Server {
+
+    private int controlPort = 21;
     private ServerSocket welcomeSocket;
     boolean serverRunning = true;
+    private static Map<InetAddress, DeviceThread> devices = new HashMap<>();
+    private static int dataPort = 2024;
 
-    public static void main(String[] args)
-    {
+    public static int getPort() {
+        return dataPort++;
+    }
+
+    public static void main(String[] args) {
         new Server();
     }
 
-    public Server()
+    private Server()
     {
         try
         {
@@ -42,17 +51,28 @@ public class Server
 
             try
             {
-                
                 Socket client = welcomeSocket.accept();
-                
+
                 // Port for incoming dataConnection (for passive mode) is the controlPort + number of created threads + 1
-                int dataPort = controlPort + noOfThreads + 1;
-                
+//                int dataPort = 2024 + noOfThreads++;
+
                 // Create new worker thread for new connection
-                Worker w = new Worker(client, dataPort);
+                Worker w = new Worker(client, devices);
+
+                // Check if device IP exist in Devices list
+                if(devices.keySet().contains(client.getInetAddress())){
+                    w.setWorkerType(threadType.DATA);
+                    devices.get(client.getInetAddress())
+                            .getData()
+                            .add(w);
+                    System.out.println(devices);
+                } else {
+                    w.setWorkerType(threadType.INITIAL);
+                    devices.put(client.getInetAddress(), new DeviceThread(w));
+                    System.out.println(devices);
+                }
 
                 System.out.println("New connection received. Worker was created.");
-                noOfThreads++;
                 w.start();
             }
             catch (IOException e)
@@ -77,4 +97,8 @@ public class Server
     
     
 
+}
+
+enum threadType {
+    INITIAL, DATA
 }
