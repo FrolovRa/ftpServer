@@ -16,26 +16,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Server.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../untitled1/src/ftpServer/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="466">
-              <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
-              <folding>
-                <element signature="e#603#604#0" expanded="true" />
-                <element signature="e#633#634#0" expanded="true" />
-                <element signature="e#646#647#0" expanded="true" />
-                <element signature="e#675#676#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="522">
+              <caret line="38" column="29" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="serc.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../untitled1/src/ftpServer/serc.java">
+      <file leaf-file-name="Client.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../untitled1/src/ftpServer/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="9" column="14" lean-forward="true" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+            <state relative-caret-position="342">
+              <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../untitled1/.gitignore">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../untitled1/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="360">
+                <caret line="20" column="58" selection-start-line="20" selection-start-column="58" selection-end-line="20" selection-end-column="58" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ListenPassiveModeConnection.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../untitled1/src/ftpServer/ListenPassiveModeConnection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="24" column="56" selection-start-line="24" selection-start-column="56" selection-end-line="24" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -43,37 +63,26 @@
       <file leaf-file-name="DeviceThread.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../untitled1/src/ftpServer/DeviceThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="772">
-              <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#205#206#0" expanded="true" />
-                <element signature="e#242#243#0" expanded="true" />
-                <element signature="e#173#174#0" expanded="true" />
-                <element signature="e#203#204#0" expanded="true" />
-                <element signature="e#249#250#0" expanded="true" />
-                <element signature="e#287#288#0" expanded="true" />
-                <element signature="e#329#330#0" expanded="true" />
-                <element signature="e#356#357#0" expanded="true" />
-                <element signature="e#810#811#0" expanded="true" />
-                <element signature="e#860#861#0" expanded="true" />
-                <element signature="e#996#997#0" expanded="true" />
-                <element signature="e#1077#1078#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="342">
+              <caret line="28" column="35" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Worker.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../untitled1/src/ftpServer/Worker.java">
+      <file leaf-file-name="Connection.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../untitled1/src/ftpServer/Connection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="637">
-              <caret line="348" column="9" lean-forward="true" selection-start-line="348" selection-start-column="9" selection-end-line="348" selection-end-column="9" />
+            <state relative-caret-position="128">
+              <caret line="145" column="38" lean-forward="true" selection-start-line="145" selection-start-column="38" selection-end-line="145" selection-end-column="38" />
               <folding>
-                <element signature="e#2052#2053#0" expanded="true" />
-                <element signature="e#2085#2086#0" expanded="true" />
-                <element signature="e#2141#2142#0" expanded="true" />
-                <element signature="e#2185#2186#0" expanded="true" />
+                <element signature="e#33807#33808#0" expanded="true" />
+                <element signature="e#33840#33841#0" expanded="true" />
+                <element signature="e#33889#33890#0" expanded="true" />
+                <element signature="e#33933#33934#0" expanded="true" />
+                <element signature="e#33986#33987#0" expanded="true" />
+                <element signature="e#34038#34039#0" expanded="true" />
+                <element signature="e#34094#34095#0" expanded="true" />
+                <element signature="e#34144#34145#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -84,8 +93,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Singleton" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -96,8 +105,8 @@
     <option name="projectSyncType">
       <map>
         <entry key="$USER_HOME$/IdeaProjects/VkTelegram" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/..//////WebApp2" value="PREVIEW" />
-        <entry key="$PROJECT_DIR$/..//////oneword" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/..///////////////WebApp2" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$/..///////////////oneword" value="PREVIEW" />
       </map>
     </option>
   </component>
@@ -113,9 +122,28 @@
         <option value="$PROJECT_DIR$/src/ftpServer/Worker.java" />
         <option value="$PROJECT_DIR$/src/ftpServer/Server.java" />
         <option value="$PROJECT_DIR$/src/ftpServer/Worker.java" />
-        <option value="$PROJECT_DIR$/../untitled1/src/ftpServer/DeviceThread.java" />
-        <option value="$PROJECT_DIR$/../untitled1/src/ftpServer/Worker.java" />
-        <option value="$PROJECT_DIR$/../untitled1/src/ftpServer/Server.java" />
+        <option value="$PROJECT_DIR$/src/ftpServer/DeviceThread.java" />
+        <option value="$PROJECT_DIR$/src/ftpServer/Server.java" />
+        <option value="$PROJECT_DIR$/src/ftpServer/Worker.java" />
+        <option value="$PROJECT_DIR$/src/ftpServer/Client.java" />
+        <option value="$PROJECT_DIR$/src/ftpServer/DeviceThread.java" />
+        <option value="$PROJECT_DIR$/src/ftpServer/Server.java" />
+        <option value="$PROJECT_DIR$/src/ftpServer/Worker.java" />
+        <option value="$PROJECT_DIR$/src/ftpServer/Worker.java" />
+        <option value="$PROJECT_DIR$/src/ftpServer/EPSVThread.java" />
+        <option value="$PROJECT_DIR$/src/ftpServer/Worker.java" />
+        <option value="$PROJECT_DIR$/src/ftpServer/EPSVThread.java" />
+        <option value="$PROJECT_DIR$/src/ftpServer/EPSVThread.java" />
+        <option value="$PROJECT_DIR$/src/ftpServer/Worker.java" />
+        <option value="$PROJECT_DIR$/src/ftpServer/EPSVThread.java" />
+        <option value="$PROJECT_DIR$/src/ftpServer/ListenConection.java" />
+        <option value="$PROJECT_DIR$/src/ftpServer/ListenConnection.java" />
+        <option value="$PROJECT_DIR$/src/ftpServer/ListenPassiveConnection.java" />
+        <option value="$PROJECT_DIR$/src/ftpServer/Worker.java" />
+        <option value="$PROJECT_DIR$/src/ftpServer/ListenPassiveModeConnection.java" />
+        <option value="$PROJECT_DIR$/src/ftpServer/Server.java" />
+        <option value="$PROJECT_DIR$/src/ftpServer/Connection.java" />
+        <option value="$PROJECT_DIR$/../untitled1/src/ftpServer/Connection.java" />
       </list>
     </option>
   </component>
@@ -129,8 +157,9 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="953" />
-    <option name="width" value="974" />
+    <option name="x" value="268" />
+    <option name="y" value="-14" />
+    <option name="width" value="1313" />
     <option name="height" value="1057" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -140,8 +169,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -152,32 +179,6 @@
             <path>
               <item name="untitled1" type="b2602c69:ProjectViewProjectNode" />
               <item name="untitled1" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="untitled1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="untitled1" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="untitled1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="untitled1" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-              <item name="untitled1" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="untitled1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="untitled1" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
-              <item name="untitled1" type="462c0819:PsiDirectoryNode" />
-              <item name="ftpServer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="untitled1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="untitled1" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -191,36 +192,7 @@
               <item name="untitled1" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="ftpServer" type="462c0819:PsiDirectoryNode" />
-              <item name="DeviceThread" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="untitled1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="untitled1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ftpServer" type="462c0819:PsiDirectoryNode" />
-              <item name="serc" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="untitled1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="untitled1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ftpServer" type="462c0819:PsiDirectoryNode" />
-              <item name="Server.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </path>
-            <path>
-              <item name="untitled1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="untitled1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ftpServer" type="462c0819:PsiDirectoryNode" />
-              <item name="Server.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-              <item name="Server" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="untitled1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="untitled1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ftpServer" type="462c0819:PsiDirectoryNode" />
-              <item name="Worker" type="1a9f42e2:ClassTreeNode" />
+              <item name="Client" type="1a9f42e2:ClassTreeNode" />
             </path>
             <path>
               <item name="untitled1" type="b2602c69:ProjectViewProjectNode" />
@@ -260,6 +232,15 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="io" type="462c0819:PsiDirectoryNode" />
               <item name="BufferedInputStream" type="1a9f42e2:ClassTreeNode" />
+            </path>
+            <path>
+              <item name="untitled1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 10 &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="java.base" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="io" type="462c0819:PsiDirectoryNode" />
+              <item name="BufferedOutputStream" type="1a9f42e2:ClassTreeNode" />
             </path>
             <path>
               <item name="untitled1" type="b2602c69:ProjectViewProjectNode" />
@@ -320,6 +301,23 @@
               <item name="&lt; 10 &gt;" type="70bed36:NamedLibraryElementNode" />
               <item name="java.base" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="net" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="untitled1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 10 &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="java.base" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="net" type="462c0819:PsiDirectoryNode" />
+              <item name="SocketOutputStream" type="1a9f42e2:ClassTreeNode" />
+            </path>
+            <path>
+              <item name="untitled1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="&lt; 10 &gt;" type="70bed36:NamedLibraryElementNode" />
+              <item name="java.base" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="text" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -335,7 +333,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -349,6 +349,11 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ftpServer" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -361,7 +366,18 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Server">
+    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ftpServer.Client" />
+      <module name="untitled1" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ftpServer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
     <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ftpServer.Server" />
       <module name="untitled1" />
@@ -414,9 +430,14 @@
       <properties />
       <listeners />
     </configuration>
+    <list>
+      <item itemvalue="Application.Server" />
+      <item itemvalue="Application.Client" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Server" />
+        <item itemvalue="Application.Client" />
       </list>
     </recent_temporary>
   </component>
@@ -435,16 +456,23 @@
       <workItem from="1555857106979" duration="2350000" />
       <workItem from="1555916709733" duration="16687000" />
       <workItem from="1556098032713" duration="14427000" />
-      <workItem from="1556181150986" duration="15665000" />
+      <workItem from="1556181150986" duration="16575000" />
+      <workItem from="1556209065931" duration="7260000" />
+      <workItem from="1556217446595" duration="3201000" />
+      <workItem from="1556257858710" duration="2855000" />
+      <workItem from="1556298183568" duration="1611000" />
+      <workItem from="1556373308193" duration="9958000" />
+      <workItem from="1556435966021" duration="23274000" />
+      <workItem from="1556479039848" duration="2264000" />
+      <workItem from="1556519949366" duration="4263000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70741000" />
+    <option name="totallyTimeSpent" value="126337000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -452,17 +480,16 @@
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50053304" side_tool="true" weight="0.35021552" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.80818963" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.47413793" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3297414" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18496802" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19083156" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3297414" />
       <window_info anchor="right" id="Google Cloud Storage" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -475,7 +502,39 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3297414" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Google Cloud Storage" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14179105" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.35021552" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3297414" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.40086207" />
+      <window_info anchor="bottom" id="Database Changes" order="7" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3297414" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.3297414" />
+      <window_info anchor="right" id="Maven Projects" order="9" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -493,41 +552,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/text/SimpleDateFormat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10170">
-          <caret line="565" column="79" lean-forward="true" selection-start-line="565" selection-start-column="79" selection-end-line="565" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/io/File.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16956">
-          <caret line="942" column="39" selection-start-line="942" selection-start-column="39" selection-end-line="942" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/io/BufferedInputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6084">
-          <caret line="338" column="28" selection-start-line="338" selection-start-column="28" selection-end-line="338" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/io/FilterInputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2376">
-          <caret line="132" column="21" selection-start-line="132" selection-start-column="21" selection-end-line="132" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/io/InputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2124">
-          <caret line="118" column="60" lean-forward="true" selection-start-line="118" selection-start-column="60" selection-end-line="118" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../untitled1/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -538,16 +562,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../untitled1/src/ftpServer/Worker.java">
+    <entry file="file://$PROJECT_DIR$/../untitled1/src/ftpServer/Connection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="13464">
           <caret line="748" column="45" selection-start-line="748" selection-start-column="45" selection-end-line="748" selection-end-column="45" />
-          <folding>
-            <element signature="e#2052#2053#0" expanded="true" />
-            <element signature="e#2085#2086#0" expanded="true" />
-            <element signature="e#2141#2142#0" expanded="true" />
-            <element signature="e#2185#2186#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -583,16 +601,10 @@
     <entry file="file://$PROJECT_DIR$/../untitled1/doc/constant-values.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/../untitled1/src/ftpServer/Worker.java">
+    <entry file="file://$PROJECT_DIR$/../untitled1/src/ftpServer/Connection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1458">
           <caret line="81" column="43" lean-forward="true" selection-start-line="81" selection-start-column="43" selection-end-line="81" selection-end-column="43" />
-          <folding>
-            <element signature="e#2052#2053#0" expanded="true" />
-            <element signature="e#2085#2086#0" expanded="true" />
-            <element signature="e#2141#2142#0" expanded="true" />
-            <element signature="e#2185#2186#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -628,16 +640,10 @@
     <entry file="file://$PROJECT_DIR$/../untitled1/doc/constant-values.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/../untitled1/src/ftpServer/Worker.java">
+    <entry file="file://$PROJECT_DIR$/../untitled1/src/ftpServer/Connection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="7434">
           <caret line="427" column="78" lean-forward="true" selection-start-line="427" selection-start-column="78" selection-end-line="427" selection-end-column="78" />
-          <folding>
-            <element signature="e#2052#2053#0" expanded="true" />
-            <element signature="e#2085#2086#0" expanded="true" />
-            <element signature="e#2141#2142#0" expanded="true" />
-            <element signature="e#2185#2186#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -673,16 +679,10 @@
     <entry file="file://$PROJECT_DIR$/../untitled1/doc/constant-values.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/../untitled1/src/ftpServer/Worker.java">
+    <entry file="file://$PROJECT_DIR$/../untitled1/src/ftpServer/Connection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2484">
           <caret line="149" lean-forward="true" selection-start-line="149" selection-end-line="149" />
-          <folding>
-            <element signature="e#2052#2053#0" expanded="true" />
-            <element signature="e#2085#2086#0" expanded="true" />
-            <element signature="e#2141#2142#0" expanded="true" />
-            <element signature="e#2185#2186#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -694,19 +694,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../untitled1/doc/allclasses-noframe.html">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../untitled1/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../untitled1/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="360">
-            <caret line="20" column="58" selection-start-line="20" selection-start-column="58" selection-end-line="20" selection-end-column="58" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../untitled1/untitled1.iml">
       <provider selected="true" editor-type-id="text-editor" />
@@ -725,13 +712,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/io/BufferedInputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6084">
-          <caret line="338" column="28" selection-start-line="338" selection-start-column="28" selection-end-line="338" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/io/File.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="16956">
@@ -739,46 +719,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../untitled1/src/ftpServer/Interceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="26" column="72" selection-start-line="26" selection-start-column="72" selection-end-line="26" selection-end-column="72" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/io/PrintWriter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="11304">
           <caret line="684" column="16" selection-start-line="684" selection-start-column="16" selection-end-line="684" selection-end-column="16" />
-          <folding>
-            <element signature="e#4478#4479#0" expanded="true" />
-            <element signature="e#4540#4541#0" expanded="true" />
-            <element signature="e#23454#23455#0" expanded="true" />
-            <element signature="e#23494#23495#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../untitled1/out/production/untitled1/ftpServer/Worker.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#23582#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../untitled1/out/production/untitled1/ftpServer/Worker.class" />
     <entry file="file://$PROJECT_DIR$/../untitled1/out/production/untitled1/ftpServer/Server.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="548">
           <caret line="61" column="40" lean-forward="true" selection-start-line="61" selection-start-column="40" selection-end-line="61" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#1578#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -786,10 +738,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="434">
           <caret line="656" column="33" lean-forward="true" selection-start-line="656" selection-start-column="33" selection-end-line="656" selection-end-column="33" />
-          <folding>
-            <element signature="e#26290#26291#0" expanded="true" />
-            <element signature="e#26333#26334#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -800,60 +748,93 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../untitled1/src/ftpServer/DeviceThread.java">
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/net/SocketOutputStream.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="772">
-          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#205#206#0" expanded="true" />
-            <element signature="e#242#243#0" expanded="true" />
-            <element signature="e#173#174#0" expanded="true" />
-            <element signature="e#203#204#0" expanded="true" />
-            <element signature="e#249#250#0" expanded="true" />
-            <element signature="e#287#288#0" expanded="true" />
-            <element signature="e#329#330#0" expanded="true" />
-            <element signature="e#356#357#0" expanded="true" />
-            <element signature="e#810#811#0" expanded="true" />
-            <element signature="e#860#861#0" expanded="true" />
-            <element signature="e#996#997#0" expanded="true" />
-            <element signature="e#1077#1078#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="185">
+          <caret line="110" selection-start-line="110" selection-end-line="110" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../untitled1/src/ftpServer/serc.java">
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/io/BufferedOutputStream.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="9" column="14" lean-forward="true" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+        <state relative-caret-position="185">
+          <caret line="80" selection-start-line="80" selection-end-line="80" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../untitled1/src/ftpServer/Worker.java">
+    <entry file="file://$PROJECT_DIR$/../untitled1/src/ftpServer/Interceptor.java" />
+    <entry file="file://$PROJECT_DIR$/../untitled1/src/ftpServer/serc.java" />
+    <entry file="file://$PROJECT_DIR$/../untitled1/out/production/untitled1/ftpServer/Client.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="637">
-          <caret line="348" column="9" lean-forward="true" selection-start-line="348" selection-start-column="9" selection-end-line="348" selection-end-column="9" />
-          <folding>
-            <element signature="e#2052#2053#0" expanded="true" />
-            <element signature="e#2085#2086#0" expanded="true" />
-            <element signature="e#2141#2142#0" expanded="true" />
-            <element signature="e#2185#2186#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="252">
+          <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/java/io/BufferedInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="676">
+          <caret line="395" lean-forward="true" selection-start-line="395" selection-end-line="395" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../untitled1/src/ftpServer/Server.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+        <state relative-caret-position="522">
+          <caret line="38" column="29" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../untitled1/src/ftpServer/ListenPassiveModeConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="24" column="56" selection-start-line="24" selection-start-column="56" selection-end-line="24" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../untitled1/src/ftpServer/DeviceThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="28" column="35" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../untitled1/src/ftpServer/Connection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="145" column="38" lean-forward="true" selection-start-line="145" selection-start-column="38" selection-end-line="145" selection-end-column="38" />
           <folding>
-            <element signature="e#603#604#0" expanded="true" />
-            <element signature="e#633#634#0" expanded="true" />
-            <element signature="e#646#647#0" expanded="true" />
-            <element signature="e#675#676#0" expanded="true" />
+            <element signature="e#33807#33808#0" expanded="true" />
+            <element signature="e#33840#33841#0" expanded="true" />
+            <element signature="e#33889#33890#0" expanded="true" />
+            <element signature="e#33933#33934#0" expanded="true" />
+            <element signature="e#33986#33987#0" expanded="true" />
+            <element signature="e#34038#34039#0" expanded="true" />
+            <element signature="e#34094#34095#0" expanded="true" />
+            <element signature="e#34144#34145#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../untitled1/src/ftpServer/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="23" column="33" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../untitled1/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="360">
+            <caret line="20" column="58" selection-start-line="20" selection-start-column="58" selection-end-line="20" selection-end-column="58" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../untitled1/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">

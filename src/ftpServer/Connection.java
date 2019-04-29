@@ -4,31 +4,32 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
+import java.net.SocketException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.Map;
 
 /**
- * Class for a FTP server worker thread.
+ * Class for a FTP server connection thread.
  * 
  * @author Moritz Stueckler (SID 20414726)
  *
  */
-public class Worker extends Thread
+public class Connection extends Thread
 {
     /**
      *  Enable debugging output to console
      */
     private boolean debugMode = true;
 
-    private int increment = 0;
+    private ListenPassiveModeConnection listenConnection;
 
-    private threadType workerType;
+    private ThreadType workerType;
 
     private Map<InetAddress, DeviceThread> devices;
+
+    private long offset = 0;
     
     /**
      * Indicating the last set transfer Type
@@ -46,8 +47,8 @@ public class Worker extends Thread
 
 
     // Path information
-    private String root;
-    private String currDirectory;
+    private String root = "i:/movie";
+    private String currDirectory = "/";
     private String fileSeparator = "/";
 
 
@@ -78,23 +79,14 @@ public class Worker extends Thread
      * @param client the socket for the current client
 //     * @param dataPort the port for the data connection
      */
-    public Worker(Socket client, Map<InetAddress, DeviceThread> devices)
+    public Connection(Socket client, int dataPort, Map<InetAddress, DeviceThread> devices)
     {
         super();
         this.controlSocket = client;
-//        this.dataPort = dataPort;
-        this.currDirectory = "/";
-        this.root = "i:/movie";
+        this.dataPort = dataPort;
         this.devices = devices;
     }
 
-    public threadType getWorkerType() {
-        return workerType;
-    }
-
-    public void setWorkerType(threadType workerType) {
-        this.workerType = workerType;
-    }
 
     /**
      * Run method required by Java thread model
@@ -110,12 +102,12 @@ public class Worker extends Thread
             controlOutWriter = new PrintWriter(controlSocket.getOutputStream(), true);
             
             // Greeting
-            sendMsgToClient("220 Welcome to the COMP4621 FTP-Server");
+            sendMsgToClient("220 Welcome to the FTP-Server");
             // Get new command from client
             while (!quitCommandLoop) {
               String a = controlIn.readLine();
 
-              System.out.println(a);
+              System.out.print(a + " ");
               executeCommand(a);
             }
         }
@@ -147,8 +139,7 @@ public class Worker extends Thread
      * Separates the command from the arguments and dispatches it to single handler functions.
      * @param c the raw input from the socket consisting of command and arguments
      */
-    private void executeCommand(String c)
-    {
+    private void executeCommand(String c) throws InterruptedException {
         if (c == null) {
             System.out.println("null command");
         }
@@ -157,9 +148,7 @@ public class Worker extends Thread
         String command = ((index == -1)? c.toUpperCase() : (c.substring(0, index)).toUpperCase());
         String args = ((index == -1)? null : c.substring(index+1, c.length()));
 
-
         debugOutput("Command: " + command + " Args: " + args);
-        System.out.println();
         // dispatcher mechanism for different commands
         switch(command) {
             case "USER":                
@@ -181,9 +170,21 @@ public class Worker extends Thread
             case "NLST":
                 handleNlst(args);
                 break;
+
+            case "MLSD":
+                handleMlsd(args);
+                break;
                 
             case "PWD":
                 handlePwd();
+                break;
+
+            case "NOOP":
+                sendMsgToClient("200 OK");
+                break;
+
+            case "ABOR":
+                handleAbor();
                 break;
                 
             case "QUIT":
@@ -195,7 +196,7 @@ public class Worker extends Thread
                 break;
             
             case "EPSV":
-                handleEpsv();
+                handleEpsv(args);
                 break;
                 
             case "SYST":
@@ -205,7 +206,11 @@ public class Worker extends Thread
             case "FEAT":
                 handleFeat();
                 break;
-                
+
+            case "OPTS UTF8":
+                sendMsgToClient("200 OK");
+                break;
+
             case "PORT":
                 handlePort(args);
                 break;
@@ -216,6 +221,10 @@ public class Worker extends Thread
             
             case "RETR":
                 handleRetr(args);
+                break;
+
+            case "REST":
+                handleRest(args);
                 break;
                 
             case "MKD":
@@ -246,6 +255,38 @@ public class Worker extends Thread
 
     }
 
+    private void handleMlsd(String args) {
+        String filename = root;
+
+        if (args == null) {
+            filename += currDirectory;
+        } else if (args.startsWith(currDirectory)) {
+            filename += args;
+        } else {
+            filename = currDirectory + fileSeparator + args;
+        }
+
+        File f = new File(filename);
+
+        if(f.exists() && f.isDirectory()){
+            sendMsgToClient("150 opening data connection");
+        }
+
+        sendMsgToClient("226 transfer complete ");
+
+    }
+
+    private void handleRest(String args) {
+        offset = Long.parseLong(args);
+        sendMsgToClient("350 REST parameter has been saved");
+    }
+
+    private void handleAbor() {
+        closeDataConnection();
+        sendMsgToClient("226");
+    }
+
+
     /**
      * Sends a message to the connected client over the control connection.
      * Flushing is automatically performed by the stream.
@@ -253,13 +294,12 @@ public class Worker extends Thread
      */
     private void sendMsgToClient(String msg)
     {
-        if(workerType == threadType.INITIAL) {
-            System.out.println("from INITIAL THREAD");
+        if(workerType == ThreadType.INITIAL) {
+            System.out.print("from INITIAL THREAD");
         }
-        System.out.println(msg);
+        System.out.println("\n" + this.getName() + "-----send to client:-----------------------------" + msg + "\n");
         controlOutWriter.println(msg);
     }
-    
 
 
     /**
@@ -294,8 +334,9 @@ public class Worker extends Thread
 
 
             //debug
-            System.out.println(response.toString());
+//            System.out.println(response.toString());
             dataOutWriter.print(response.toString() + '\r' + '\n');
+//            dataOutWriter.print(msg.getName() + '\r' + '\n');
         }
         
     }
@@ -309,15 +350,14 @@ public class Worker extends Thread
      */
     private void openDataConnectionPassive(int port)
     {
-
         try
         {
-            System.out.println("in openDataConnection method " + port);
             dataSocket = new ServerSocket(port);
-            System.out.println("waiting for connect...");
+            System.out.println("waiting for connect... port: " + port);
             dataConnection = dataSocket.accept();
             dataOutWriter = new PrintWriter(dataConnection.getOutputStream(), true);
             debugOutput("Data connection - Passive Mode - established");
+            System.out.println("Data connection - Passive Mode - established");
 
         } catch (IOException e)
         {
@@ -359,14 +399,14 @@ public class Worker extends Thread
     {
         try
         {
-            dataOutWriter.close();
+            if(dataOutWriter != null){
+                dataOutWriter.close();
+            }
             dataConnection.close();
-            if (dataSocket != null)
-            {
+            if (dataSocket != null){
                 dataSocket.close();
             }
-            
-           
+
             debugOutput("Data connection was closed");
         } catch (IOException e)
         {
@@ -414,7 +454,6 @@ public class Worker extends Thread
         if (currentUserStatus == userStatus.ENTEREDUSERNAME && password.equals(validPassword))
         {
             currentUserStatus = userStatus.LOGGEDIN;
-            sendMsgToClient("230-Welcome to HKUST");
             sendMsgToClient("230 User logged in successfully");  
         }
         
@@ -476,6 +515,13 @@ public class Worker extends Thread
      */
     private void handleNlst(String args)
     {
+        // waiting for thread that listen the connection
+        try {
+            listenConnection.join(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         if (dataConnection == null || dataConnection.isClosed())
         {
             sendMsgToClient("425 No data connection was established");
@@ -497,10 +543,8 @@ public class Worker extends Thread
                 {
                     sendDataMsgToClient(dirContent[i]);
                 }
-            
                 sendMsgToClient("226 Transfer complete.");
                 closeDataConnection();
-                
             }
         }
     }
@@ -517,8 +561,7 @@ public class Worker extends Thread
     {
         // Construct the name of the directory to list.
         String filename = root + currDirectory;
-        if (args != null)
-        {
+        if (args != null && !args.equals("-l")) {
             filename = filename + fileSeparator + args;
         }
     
@@ -576,18 +619,22 @@ public class Worker extends Thread
         sendMsgToClient("257 \"" + currDirectory + "\"");
     }
 
-    private void handleSize(String args)
-    {
-        String filename = root + fileSeparator + args;
+    private void handleSize(String args) {
+        String filename;
+
+        if (args.startsWith("/")) {
+            filename  = root + args;
+        } else {
+            filename = root + currDirectory + args;
+        }
 
         // Now get a File object, and see if the name we got exists
         File f = new File(filename);
 
-        if (f.exists() && f.isFile())
-        {
+        if (f.exists() && f.isFile()) {
             sendMsgToClient("213 " + f.length());
         } else {
-            sendMsgToClient("550");
+            sendMsgToClient("550 File not found");
         }
     }
     
@@ -603,18 +650,21 @@ public class Worker extends Thread
         // Java sockets did not offer a good method for this
 //        String myIp = "192.168.0.199";
 //        String myIpSplit[] = myIp.split("\\.");
-//        dataPort = dataPort + increment;
-        int a = Server.getPort();
-//        int p1 = dataPort/256;
-        int p1 = a/256;
-//        int p2 = dataPort%256;
-        int p2 = a%256;
+        int p1 = dataPort/256;
+        int p2 = dataPort%256;
+
+
 
         sendMsgToClient("227 Entering Passive Mode (192,168,0,199," + p1 + "," + p2 +")" );
-        
-        openDataConnectionPassive(a);
-//        openDataConnectionPassive(dataPort);
-//        increment++;
+
+        listenConnection = new ListenPassiveModeConnection(this, dataPort);
+        listenConnection.start();
+
+//        if(isListening(dataPort, 500)) {
+//            sendMsgToClient("227 Entering Passive Mode (192,168,0,199," + p1 + "," + p2 +")" );
+//        } else {
+//            System.out.println("error in new method");
+//        }
 
     }
     
@@ -622,18 +672,35 @@ public class Worker extends Thread
      * Handler for EPSV command which initiates extended passive mode.
      * Similar to PASV but for newer clients (IPv6 support is possible but not implemented here).
      */
-    private void handleEpsv() {
-        int a = Server.getPort();
-        devices.get(controlSocket.getInetAddress())
-                .getInitialThread()
-                .sendMsgToClient("229 Entering Extended Passive Mode (|||" + a + "|)");
-//        sendMsgToClient("229 Entering Extended Passive Mode (|||" + a + "|)");
-        System.out.println("used by " + this.getName() + " Thread " + workerType+ " type");
+    private void handleEpsv(String args) {
 
-//        sendMsgToClient("229 Entering Extended Passive Mode (|||" + dataPort + "|)");
-        openDataConnectionPassive(a);
+        if(args != null && args.toUpperCase().equals("ALL")) {
 
+            sendMsgToClient("200 OK");
+
+        } else {
+
+            sendMsgToClient("229 Entering Extended Passive Mode (|||" + dataPort + "|)");
+            System.out.println("used by " + this.getName() + " Thread " + workerType+ " type");
+
+            listenConnection = new ListenPassiveModeConnection(this, dataPort);
+            listenConnection.start();
+        }
     }
+
+//    private void handleEpsv() {
+//        sendMsgToClient("229 Entering Extended Passive Mode (|||" + freeDataPort + "|)");
+//        try {
+//            dataSocket = new ServerSocket(freeDataPort);
+//            System.out.println("waiting for connect... port: " + freeDataPort);
+//            dataConnection = dataSocket.accept();
+//            dataOutWriter = new PrintWriter(dataConnection.getOutputStream(), true);
+//        } catch (IOException e)
+//        {
+//            debugOutput("Could not create data connection.");
+//            e.printStackTrace();
+//        }
+//    }
     
     /**
      * Handler for the QUIT command.
@@ -657,8 +724,15 @@ public class Worker extends Thread
      */
     private void handleFeat()
     {
-        sendMsgToClient("211-Extensions supported:");
-        sendMsgToClient("EPLF");
+        sendMsgToClient("211-Features:");
+//        sendMsgToClient("MDTM");
+        sendMsgToClient("REST STREAM");
+        sendMsgToClient("SIZE");
+//        sendMsgToClient("MLST type*;size*;modify*;");
+//        sendMsgToClient("MLSD");
+        sendMsgToClient("UTF8");
+//        sendMsgToClient("CLNT");
+//        sendMsgToClient("MFMT");
         sendMsgToClient("EPSV");
         sendMsgToClient("EPRT");
         sendMsgToClient("211 END");
@@ -755,19 +829,30 @@ public class Worker extends Thread
      * Retrieve transfers a file from the ftp server to the client.
      * @param file The file to transfer to the user
      */
-    private void handleRetr(String file)
-    {
-        File f =  new File(root + file);
-//        File f =  new File(currDirectory + fileSeparator + file);
+    private void handleRetr(String file){
+        String filename;
 
-        if(!f.exists())
-        {
+        if(file.startsWith(currDirectory)) {
+            filename = root + file;
+        } else if (file.startsWith("/")) {
+            filename = root + currDirectory + file;
+        } else {
+            filename = root + fileSeparator + file;
+        }
+
+        try {
+            listenConnection.join(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(filename);
+        File f =  new File(filename);
+
+        if(!f.exists()) {
             sendMsgToClient("550 File does not exist");
         }
-    
-        else
-        {
-            
+        else {
             // Binary mode
             if (transferMode == transferType.BINARY)
             {
@@ -775,7 +860,7 @@ public class Worker extends Thread
                 BufferedInputStream fin = null;
                 
                 sendMsgToClient("150 Opening binary mode data connection for requested file " + f.getName());
-                
+
                 try
                 {
                     //create streams
@@ -792,22 +877,22 @@ public class Worker extends Thread
                 // write file with buffer
                 byte[] buf = new byte[1024];
                 int l = 0;
-                try
-                {
-                    while ((l = fin.read(buf,0,1024)) != -1)
-                    {
-                        fout.write(buf,0,l);
+                try {
+                    System.out.println(fin.skip(offset));
+                    offset = 0;
+
+                    while ((l = fin.read(buf,0,1024)) > 0) {
+                        fout.write(buf,0, l);
                     }
-                }
-                catch (IOException e)
-                {
+                } catch (SocketException ea) {
+                    debugOutput("stop writing");
+                } catch (IOException e) {
                     debugOutput("Could not read from or write to file streams");
                     e.printStackTrace();
                 }
                 
                 //close streams
-                try
-                {
+                try {
                     fin.close();
                     fout.close();
                 } catch (IOException e)
@@ -815,7 +900,6 @@ public class Worker extends Thread
                     debugOutput("Could not close file streams");
                     e.printStackTrace();
                 }
-                
                     
                 debugOutput("Completed file transmission of " + f.getName());
     
@@ -869,9 +953,8 @@ public class Worker extends Thread
             }
     
         }
-        closeDataConnection();
-    
-    }
+//        closeDataConnection();
+        }
     
     /**
      * Handler for STOR (Store) command.
@@ -1030,10 +1113,54 @@ public class Worker extends Thread
     {
         if (debugMode)
         {
-            System.out.println("Thread " + this.getId() + ": " + msg);
+            System.out.println("Thread " + this.getName() + ": " + msg);
         }
     }
-    
-    
 
+    ThreadType getWorkerType() {
+        return workerType;
+    }
+
+    void setWorkerType(ThreadType workerType) {
+        this.workerType = workerType;
+    }
+
+    void setDataConnection(Socket dataConnection) {
+        this.dataConnection = dataConnection;
+    }
+
+    void setDataOutWriter(PrintWriter dataOutWriter) {
+        this.dataOutWriter = dataOutWriter;
+    }
+
+    private boolean isListening(int port, int timeout) {
+        Socket test = null;
+        try {
+                test = new Socket("localhost", port);
+                return true;
+            } catch (IOException e) {
+//                e.printStackTrace();
+                System.out.println("port isn't available " + e.getMessage());
+                if(timeout <= 0) {
+                    return false;
+                } else {
+                    try {
+                        Thread.sleep(100);
+                        timeout = timeout - 100;
+                    } catch (InterruptedException e1) {
+                        e1.printStackTrace();
+                    }
+                    return isListening(port, timeout);
+                }
+            }
+            finally {
+                if(test != null){
+                    try {
+                        test.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+    }
 }

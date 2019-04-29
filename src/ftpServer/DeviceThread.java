@@ -4,22 +4,22 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class DeviceThread {
-    private Worker initialThread;
-    private ArrayList<Worker> data = new ArrayList<>();
+    private Connection initialThread;
+    private ArrayList<Connection> data = new ArrayList<>();
 
-    DeviceThread(Worker initialThread) {
+    DeviceThread(Connection initialThread) {
         this.initialThread = initialThread;
     }
 
-    public Worker getInitialThread() {
+    public Connection getInitialThread() {
         return initialThread;
     }
 
-    public void setInitialThread(Worker initialThread) {
+    public void setInitialThread(Connection initialThread) {
         this.initialThread = initialThread;
     }
 
-    public ArrayList<Worker> getData() {
+    public ArrayList<Connection> getData() {
         return data;
     }
 
@@ -40,6 +40,6 @@ public class DeviceThread {
 
     @Override
     public String toString() {
-        return initialThread.getWorkerType() + initialThread.getName() + "\n" + data.size();
+        return initialThread.getWorkerType() + initialThread.getName() + "    Workers in data list: " + data.size();
     }
 }

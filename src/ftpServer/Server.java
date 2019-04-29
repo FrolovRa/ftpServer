@@ -18,11 +18,11 @@ public class Server {
 
     private int controlPort = 21;
     private ServerSocket welcomeSocket;
-    boolean serverRunning = true;
+    private boolean serverRunning = true;
     private static Map<InetAddress, DeviceThread> devices = new HashMap<>();
     private static int dataPort = 2024;
 
-    public static int getPort() {
+    private static int getPort() {
         return dataPort++;
     }
 
@@ -57,17 +57,17 @@ public class Server {
 //                int dataPort = 2024 + noOfThreads++;
 
                 // Create new worker thread for new connection
-                Worker w = new Worker(client, devices);
+                Connection w = new Connection(client, getPort(), devices);
 
                 // Check if device IP exist in Devices list
                 if(devices.keySet().contains(client.getInetAddress())){
-                    w.setWorkerType(threadType.DATA);
+                    w.setWorkerType(ThreadType.DATA);
                     devices.get(client.getInetAddress())
                             .getData()
                             .add(w);
                     System.out.println(devices);
                 } else {
-                    w.setWorkerType(threadType.INITIAL);
+                    w.setWorkerType(ThreadType.INITIAL);
                     devices.put(client.getInetAddress(), new DeviceThread(w));
                     System.out.println(devices);
                 }
@@ -80,7 +80,6 @@ public class Server {
                 System.out.println("Exception encountered on accept");  
                 e.printStackTrace();
             }
-            
         }
         try
         {
@@ -94,11 +93,8 @@ public class Server {
         }
 
     }
-    
-    
-
 }
 
-enum threadType {
+enum ThreadType {
     INITIAL, DATA
 }
