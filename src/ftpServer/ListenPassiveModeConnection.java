@@ -21,11 +21,11 @@ public class ListenPassiveModeConnection extends Thread {
         {
             // data Connection
             ServerSocket dataSocket = new ServerSocket(port);
-            System.out.println("waiting for connect... port: " + port);
+            System.out.println(this.getName() +"-------waiting for connect... port: " + port);
             Socket dataConnection = dataSocket.accept();
             w.setDataConnection(dataConnection);
             w.setDataOutWriter(new PrintWriter(dataConnection.getOutputStream(), true));
-            System.out.println("Data connection established");
+            System.out.println(this.getName() + "------Data connection established");
             dataSocket.close();
 
         } catch (IOException e)   {

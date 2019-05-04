@@ -7,13 +7,7 @@ import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * FTP Server class.
- * On receiving a new connection it creates a new worker thread.
- * 
- * @author Moritz Stueckler (SID 20414726)
- *
- */
+
 public class Server {
 
     private int controlPort = 21;
@@ -44,36 +38,29 @@ public class Server {
         
         System.out.println("FTP Server started listening on port " + controlPort);
 
-        int noOfThreads = 0;
-        
-        while (serverRunning)
-        {
+        while (serverRunning) {
 
-            try
-            {
+            try {
                 Socket client = welcomeSocket.accept();
 
-                // Port for incoming dataConnection (for passive mode) is the controlPort + number of created threads + 1
-//                int dataPort = 2024 + noOfThreads++;
-
                 // Create new worker thread for new connection
-                Connection w = new Connection(client, getPort(), devices);
+                Connection newConnection = new Connection(client, getPort());
 
                 // Check if device IP exist in Devices list
                 if(devices.keySet().contains(client.getInetAddress())){
-                    w.setWorkerType(ThreadType.DATA);
+                    newConnection.setWorkerType(ThreadType.DATA);
                     devices.get(client.getInetAddress())
                             .getData()
-                            .add(w);
+                            .add(newConnection);
                     System.out.println(devices);
                 } else {
-                    w.setWorkerType(ThreadType.INITIAL);
-                    devices.put(client.getInetAddress(), new DeviceThread(w));
+                    newConnection.setWorkerType(ThreadType.INITIAL);
+                    devices.put(client.getInetAddress(), new DeviceThread(newConnection));
                     System.out.println(devices);
                 }
 
                 System.out.println("New connection received. Worker was created.");
-                w.start();
+                newConnection.start();
             }
             catch (IOException e)
             {
@@ -91,7 +78,6 @@ public class Server {
             System.out.println("Problem stopping server"); 
             System.exit(-1);
         }
-
     }
 }
 

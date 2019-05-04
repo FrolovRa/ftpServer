@@ -1,21 +1,12 @@
 package ftpServer;
 
 import java.io.*;
-import java.net.InetAddress;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Locale;
-import java.util.Map;
 
-/**
- * Class for a FTP server connection thread.
- * 
- * @author Moritz Stueckler (SID 20414726)
- *
- */
+
 public class Connection extends Thread
 {
     /**
@@ -26,8 +17,6 @@ public class Connection extends Thread
     private ListenPassiveModeConnection listenConnection;
 
     private ThreadType workerType;
-
-    private Map<InetAddress, DeviceThread> devices;
 
     private long offset = 0;
     
@@ -59,7 +48,6 @@ public class Connection extends Thread
 
 
     // data Connection
-    private ServerSocket dataSocket;
     private Socket dataConnection;
     private PrintWriter dataOutWriter;
     
@@ -79,12 +67,11 @@ public class Connection extends Thread
      * @param client the socket for the current client
 //     * @param dataPort the port for the data connection
      */
-    public Connection(Socket client, int dataPort, Map<InetAddress, DeviceThread> devices)
+    public Connection(Socket client, int dataPort)
     {
         super();
         this.controlSocket = client;
         this.dataPort = dataPort;
-        this.devices = devices;
     }
 
 
@@ -106,8 +93,6 @@ public class Connection extends Thread
             // Get new command from client
             while (!quitCommandLoop) {
               String a = controlIn.readLine();
-
-              System.out.print(a + " ");
               executeCommand(a);
             }
         }
@@ -130,8 +115,7 @@ public class Connection extends Thread
                 e.printStackTrace();
                 debugOutput("Could not close sockets");
             } 
-        } 
-        
+        }
     }
     
     /**
@@ -142,6 +126,8 @@ public class Connection extends Thread
     private void executeCommand(String c) throws InterruptedException {
         if (c == null) {
             System.out.println("null command");
+            quitCommandLoop = true;
+            return;
         }
         // split command and arguments
         int index = c.indexOf(' ');
@@ -207,7 +193,7 @@ public class Connection extends Thread
                 handleFeat();
                 break;
 
-            case "OPTS UTF8":
+            case "OPTS":
                 sendMsgToClient("200 OK");
                 break;
 
@@ -283,7 +269,7 @@ public class Connection extends Thread
 
     private void handleAbor() {
         closeDataConnection();
-        sendMsgToClient("226");
+        sendMsgToClient("226 Data connection was closed");
     }
 
 
@@ -306,66 +292,56 @@ public class Connection extends Thread
      * Send a message to the connected client over the data connection.
      * @param msg Message to be sent
      */
-    private void sendDataMsgToClient(File msg)
-    {
-        if (dataConnection == null || dataConnection.isClosed())
-        {
+    private void sendDataMsgToClient(File msg) {
+        if (dataConnection == null || dataConnection.isClosed())  {
             sendMsgToClient("425 No data connection was established");
             debugOutput("Cannot send message, because no data connection is established");
         }
-        else
-        {
-
-
+        else {
             StringBuilder response = new StringBuilder();
-            if(msg.isFile()) {
+            if(msg.isFile())
                 response.append("-");
-            } else if(msg.isDirectory()){
+            else if (msg.isDirectory())
                 response.append("d");
-            }
-
-            response.append(" 1 2 frolovPC 4 ")
-            .append(msg.length())
-            .append(" ")
-//            .append(new SimpleDateFormat("dd hh:mm", Locale.ENGLISH).format(msg.lastModified()))
-            .append(new SimpleDateFormat("MMM dd hh:mm", Locale.ENGLISH).format(msg.lastModified()))
-            .append(" ")
-            .append(msg.getName());
+            response
+                    .append(" 1 2 frolovPC 4 ")
+                    .append(msg.length())
+                    .append(" ")
+                    .append(new SimpleDateFormat("MMM dd hh:mm", Locale.ENGLISH).format(msg.lastModified()))
+                    .append(" ")
+                    .append(msg.getName());
 
 
             //debug
 //            System.out.println(response.toString());
             dataOutWriter.print(response.toString() + '\r' + '\n');
-//            dataOutWriter.print(msg.getName() + '\r' + '\n');
         }
-        
     }
 
 
 
-    /**
-     * Open a new data connection socket and wait for new incoming connection from client.
-     * Used for passive mode.
-     * @param port Port on which to listen for new incoming connection
-     */
-    private void openDataConnectionPassive(int port)
-    {
-        try
-        {
-            dataSocket = new ServerSocket(port);
-            System.out.println("waiting for connect... port: " + port);
-            dataConnection = dataSocket.accept();
-            dataOutWriter = new PrintWriter(dataConnection.getOutputStream(), true);
-            debugOutput("Data connection - Passive Mode - established");
-            System.out.println("Data connection - Passive Mode - established");
-
-        } catch (IOException e)
-        {
-            debugOutput("Could not create data connection.");
-            e.printStackTrace();
-        }
-
-    }
+//    /**
+//     * Open a new data connection socket and wait for new incoming connection from client.
+//     * Used for passive mode.
+//     * @param port Port on which to listen for new incoming connection
+//     */
+//    private void openDataConnectionPassive(int port)
+//    {
+//        try
+//        {
+//            dataSocket = new ServerSocket(port);
+//            System.out.println("waiting for connect... port: " + port);
+//            dataConnection = dataSocket.accept();
+//            dataOutWriter = new PrintWriter(dataConnection.getOutputStream(), true);
+//            debugOutput("Data connection - Passive Mode - established");
+//            System.out.println("Data connection - Passive Mode - established");
+//
+//        } catch (IOException e)
+//        {
+//            debugOutput("Could not create data connection.");
+//            e.printStackTrace();
+//        }
+//    }
 
 
 
@@ -379,11 +355,10 @@ public class Connection extends Thread
     {
         try
         {
-            dataConnection = new Socket("192.168.0.105", port);
+            dataConnection = new Socket(ipAddress, port);
             dataOutWriter = new PrintWriter(dataConnection.getOutputStream(), true);
             debugOutput("Data connection - Active Mode - established");
-        } catch (IOException e)
-        {
+        } catch (IOException e) {
             debugOutput("Could not connect to client data socket");
             e.printStackTrace();
         }
@@ -395,27 +370,20 @@ public class Connection extends Thread
     /**
      * Close previously established data connection sockets and streams
      */
-    private void closeDataConnection()
-    {
-        try
-        {
+    private void closeDataConnection(){
+        try {
             if(dataOutWriter != null){
                 dataOutWriter.close();
             }
             dataConnection.close();
-            if (dataSocket != null){
-                dataSocket.close();
-            }
 
             debugOutput("Data connection was closed");
-        } catch (IOException e)
-        {
+        } catch (IOException e) {
             debugOutput("Could not close data connection");
             e.printStackTrace();
         }
         dataOutWriter = null;
         dataConnection = null;
-        dataSocket = null;          
     }
 
 
@@ -841,7 +809,7 @@ public class Connection extends Thread
         }
 
         try {
-            listenConnection.join(200);
+            listenConnection.join(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -851,56 +819,33 @@ public class Connection extends Thread
 
         if(!f.exists()) {
             sendMsgToClient("550 File does not exist");
-        }
-        else {
+        } else {
             // Binary mode
-            if (transferMode == transferType.BINARY)
-            {
-                BufferedOutputStream fout = null;
-                BufferedInputStream fin = null;
-                
+            if (transferMode == transferType.BINARY) {
+
                 sendMsgToClient("150 Opening binary mode data connection for requested file " + f.getName());
 
-                try
-                {
-                    //create streams
-                    fout = new BufferedOutputStream(dataConnection.getOutputStream());
-                    fin = new BufferedInputStream(new FileInputStream(f));
-                }
-                catch (Exception e)
-                {
-                    debugOutput("Could not create file streams");
-                }
-                    
-                debugOutput("Starting file transmission of " + f.getName());
-                
-                // write file with buffer
-                byte[] buf = new byte[1024];
-                int l = 0;
-                try {
-                    System.out.println(fin.skip(offset));
-                    offset = 0;
+                try (BufferedOutputStream fout = new BufferedOutputStream(dataConnection.getOutputStream());
+                     BufferedInputStream fin = new BufferedInputStream(new FileInputStream(f))) {
+                    byte[] buf = new byte[1024];
+                    int l;
+                    try {
+                        long skip = fin.skip(offset);
+                        offset = 0;
 
-                    while ((l = fin.read(buf,0,1024)) > 0) {
-                        fout.write(buf,0, l);
+                        debugOutput("Starting file transmission of " + f.getName() + " with skipping " + skip +" bytes");
+                        while ((l = fin.read(buf, 0, 1024)) > 0) {
+                            fout.write(buf, 0, l);
+                        }
+                    } catch (SocketException ea) {
+                        debugOutput("End of writing");
+                    } catch (IOException e) {
+                        debugOutput("Could not read from or write to file streams");
+                        e.printStackTrace();
                     }
-                } catch (SocketException ea) {
-                    debugOutput("stop writing");
-                } catch (IOException e) {
-                    debugOutput("Could not read from or write to file streams");
-                    e.printStackTrace();
+                } catch (Exception e) {
+                    e.getStackTrace();
                 }
-                
-                //close streams
-                try {
-                    fin.close();
-                    fout.close();
-                } catch (IOException e)
-                {
-                    debugOutput("Could not close file streams");
-                    e.printStackTrace();
-                }
-                    
                 debugOutput("Completed file transmission of " + f.getName());
     
                 sendMsgToClient("226 File transfer successful. Closing data connection.");
@@ -908,8 +853,7 @@ public class Connection extends Thread
             }
             
             // ASCII mode
-            else
-            {
+            else {
                 sendMsgToClient("150 Opening ASCII mode data connection for requested file " + f.getName());
     
                 BufferedReader rin = null;
@@ -1111,8 +1055,7 @@ public class Connection extends Thread
      */
     private void debugOutput(String msg)
     {
-        if (debugMode)
-        {
+        if (debugMode) {
             System.out.println("Thread " + this.getName() + ": " + msg);
         }
     }

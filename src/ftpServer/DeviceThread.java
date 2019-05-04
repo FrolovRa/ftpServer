@@ -40,6 +40,6 @@ public class DeviceThread {
 
     @Override
     public String toString() {
-        return initialThread.getWorkerType() + initialThread.getName() + "    Workers in data list: " + data.size();
+        return initialThread.getWorkerType() + "---" + initialThread.getName() + "---Workers in data list:-" + data.size();
     }
 }
